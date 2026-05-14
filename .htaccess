@@ -1,0 +1,30 @@
+RewriteEngine On
+
+RewriteBase /ai-quiz/
+
+
+# HOME PAGE
+
+RewriteRule ^$ pages/landing.php [L]
+
+
+# CLEAN PAGE URLS
+
+RewriteRule ^quiz/?$ pages/quiz.php [L]
+RewriteRule ^result/?$ pages/result.php [L]
+RewriteRule ^unlock/?$ pages/unlock.php [L]
+RewriteRule ^full-report/?$ pages/full-report.php [L]
+
+
+# ADMIN URLS
+
+RewriteRule ^admin/?$ admin/login.php [L]
+RewriteRule ^dashboard/?$ admin/dashboard.php [L]
+RewriteRule ^questions/?$ admin/questions.php [L]
+
+
+# REMOVE .php EXTENSION
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/.]+)$ $1.php [L]
